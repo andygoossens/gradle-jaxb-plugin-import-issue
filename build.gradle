@@ -1,0 +1,29 @@
+plugins {
+  id 'org.openrepose.gradle.plugins.jaxb' version '2.5.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.openrepose.gradle.plugins.jaxb'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+  jaxb "com.sun.xml.bind:jaxb-xjc:2.2.7"
+  jaxb "com.sun.xml.bind:jaxb-impl:2.2.7"
+  jaxb "javax.xml.bind:jaxb-api:2.2.7"
+  jaxb "org.jvnet.jaxb2_commons:jaxb2-basics:0.6.5"
+  jaxb "org.jvnet.jaxb2_commons:jaxb2-basics-ant:0.6.5"
+}
+
+jaxb {
+  xsdDir = "src/main/resources/xsd"
+  xjc {
+    taskClassname = "org.jvnet.jaxb2_commons.xjc.XJC2Task"
+    args = []
+  }
+}
+
+wrapper {
+  gradleVersion = '5.3'
+}
